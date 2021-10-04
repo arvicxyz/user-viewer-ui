@@ -5,7 +5,7 @@ namespace XamApp.Models.Dtos
     public class UserModel
     {
         [JsonPropertyName("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("name")]
         public string Name { get; set; }

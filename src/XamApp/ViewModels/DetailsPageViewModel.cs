@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using XamApp.Models;
 using XamApp.ViewModels.Commands;
 
 namespace XamApp.ViewModels
@@ -50,6 +51,14 @@ namespace XamApp.ViewModels
         #endregion
 
         #region Properties
+
+        private UserModel _selectedItem;
+        public UserModel SelectedItem
+        {
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value, nameof(SelectedItem));
+        }
+
         #endregion
     }
 }

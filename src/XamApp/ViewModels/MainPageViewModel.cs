@@ -81,6 +81,7 @@ namespace XamApp.ViewModels
                     var selectedItem = (UserModel)args.Item;
                     var viewModel = (DetailsPageViewModel)page.BindingContext;
                     viewModel.PageTitle = $"{selectedItem.Name}";
+                    viewModel.SelectedItem = selectedItem;
                     await Navigation.PushAsync(page);
                 });
             });

@@ -1,18 +1,18 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XamApp.Views.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:base="clr-namespace:XamApp.ViewModels;assembly=XamApp"
              xmlns:behaviors="clr-namespace:XamApp.Behaviors;assembly=XamApp"
              xmlns:constants="clr-namespace:XamApp.Constants;assembly=XamApp"
              xmlns:controls="clr-namespace:XamApp.Views.Controls;assembly=XamApp"
              xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="XamApp.Views.MainPage"
              base:ViewModelLocator.AutoWireViewModel="True"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{StaticResource PageBgColor}">
+             BackgroundColor="{StaticResource PageBgColor}"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand"
-              RowSpacing="0">
+        <Grid RowSpacing="0"
+              VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -21,12 +21,12 @@
 
             <!-- Main -->
             <ListView Grid.Row="1"
-                      ItemsSource="{Binding GroupedData}"
-                      SelectionMode="None"
-                      SeparatorVisibility="None"
+                      BackgroundColor="Transparent"
                       HasUnevenRows="True"
                       IsGroupingEnabled="True"
-                      BackgroundColor="Transparent">
+                      ItemsSource="{Binding GroupedData}"
+                      SelectionMode="None"
+                      SeparatorVisibility="None">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding SelectItemCommand}"
                                                       EventName="ItemTapped" />
@@ -34,23 +34,23 @@
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Key}"
-                                   VerticalTextAlignment="Center"
-                                   Padding="15,10"
+                            <Label Padding="15,10"
+                                   BackgroundColor="{StaticResource MainLightBgColor}"
                                    FontFamily="{StaticResource MediumFontFamily}"
                                    FontSize="{StaticResource LabelFontSize}"
+                                   Text="{Binding Key}"
                                    TextColor="{StaticResource PrimaryTextColor}"
-                                   BackgroundColor="{StaticResource MainLightBgColor}" />
+                                   VerticalTextAlignment="Center" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.GroupHeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid VerticalOptions="Start"
-                                  Margin="4"
+                            <Grid Margin="4"
                                   Padding="10"
-                                  ColumnSpacing="0">
+                                  ColumnSpacing="0"
+                                  VerticalOptions="Start">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -60,48 +60,37 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <ffimage:CachedImage Grid.Column="0"
-                                                     Source="{Binding ImageUrl}"
-                                                     LoadingPlaceholder="img_loading.png"
-                                                     ErrorPlaceholder="img_default.png"
-                                                     HorizontalOptions="FillAndExpand"
-                                                     WidthRequest="80"
-                                                     HeightRequest="80"
                                                      Aspect="AspectFill"
                                                      CacheDuration="30"
-                                                     RetryCount="5"
-                                                     RetryDelay="450"
+                                                     DownsampleToViewSize="True"
+                                                     ErrorPlaceholder="img_default.png"
                                                      FadeAnimationEnabled="True"
                                                      FadeAnimationForCachedImages="True"
-                                                     DownsampleToViewSize="True" />
+                                                     HeightRequest="80"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     LoadingPlaceholder="img_loading.png"
+                                                     RetryCount="5"
+                                                     RetryDelay="450"
+                                                     Source="{Binding ImageUrl}"
+                                                     WidthRequest="80" />
                                 <StackLayout Grid.Column="1"
-                                             Orientation="Vertical"
-                                             VerticalOptions="Center"
                                              Margin="20,0,0,0"
-                                             Spacing="3">
-                                    <Label Text="{Binding CommonName}"
-                                           FontFamily="{StaticResource MediumFontFamily}"
+                                             Orientation="Vertical"
+                                             Spacing="3"
+                                             VerticalOptions="Center">
+                                    <Label FontFamily="{StaticResource MediumFontFamily}"
                                            FontSize="{StaticResource BigFontSize}"
-                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           LineBreakMode="TailTruncation"
                                            MaxLines="1"
-                                           LineBreakMode="TailTruncation" />
-                                    <Label Text="{Binding ScientificName}"
-                                           FontFamily="{StaticResource RegularFontFamily}"
-                                           FontAttributes="Italic"
-                                           FontSize="{StaticResource LabelFontSize}"
-                                           TextColor="{StaticResource SubTextColor}"
-                                           MaxLines="1"
-                                           LineBreakMode="TailTruncation" />
-                                    <Label Text="{Binding Year}"
-                                           FontFamily="{StaticResource LightFontFamily}"
-                                           FontSize="{StaticResource TextFontSize}"
-                                           TextColor="{StaticResource SecondaryTextColor}" />
+                                           Text="{Binding Name}"
+                                           TextColor="{StaticResource PrimaryTextColor}" />
                                 </StackLayout>
                                 <Label Grid.Column="2"
-                                       Text="{Static constants:FontAwesomeIcon.AngleRight}"
-                                       VerticalOptions="Center"
                                        FontFamily="{StaticResource IconFontFamily}"
                                        FontSize="{StaticResource IconFontBigSize}"
-                                       TextColor="{StaticResource PrimaryColor}" />
+                                       Text="{Static constants:FontAwesomeIcon.AngleRight}"
+                                       TextColor="{StaticResource PrimaryColor}"
+                                       VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -112,24 +101,24 @@
             </ListView>
 
             <!-- Toolbar -->
-            <controls:ToolbarView Grid.Row="0"
-                                  x:Name="Toolbar"
-                                  Text="{Binding PageTitle}"
+            <controls:ToolbarView x:Name="Toolbar"
+                                  Grid.Row="0"
+                                  BarBackgroundColor="{StaticResource PrimaryColor}"
                                   FontFamily="DancingScript"
                                   FontSize="{StaticResource HugeFontSize}"
-                                  TextColor="{StaticResource TertiaryTextColor}"
+                                  HasIcon="False"
+                                  IconAlignment="Center"
+                                  IconColor="{StaticResource IconsColor}"
                                   IconFont="{StaticResource LightIconFontFamily}"
                                   IconSize="{StaticResource IconFontSize}"
-                                  IconColor="{StaticResource IconsColor}"
-                                  IconAlignment="Center"
-                                  HasIcon="False"
-                                  BarBackgroundColor="{StaticResource PrimaryColor}" />
+                                  Text="{Binding PageTitle}"
+                                  TextColor="{StaticResource TertiaryTextColor}" />
 
             <!-- Loading -->
             <controls:LoadingView Grid.RowSpan="2"
-                                  Text="{Binding LoadingMessage}"
                                   IsLoading="{Binding IsBusy}"
-                                  IsVisible="{Binding IsBusy}" />
+                                  IsVisible="{Binding IsBusy}"
+                                  Text="{Binding LoadingMessage}" />
 
         </Grid>
     </ContentPage.Content>

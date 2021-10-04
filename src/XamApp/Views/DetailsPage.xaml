@@ -1,15 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XamApp.Views.DetailsPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:base="clr-namespace:XamApp.ViewModels;assembly=XamApp"
              xmlns:controls="clr-namespace:XamApp.Views.Controls;assembly=XamApp"
-             x:Class="XamApp.Views.DetailsPage"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              base:ViewModelLocator.AutoWireViewModel="True"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{StaticResource PageBgColor}">
+             BackgroundColor="{StaticResource PageBgColor}"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand"
-              RowSpacing="0">
+        <Grid RowSpacing="0"
+              VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -18,37 +19,48 @@
             <!-- Main -->
             <ScrollView Grid.Row="1">
                 <StackLayout Orientation="Vertical"
-                             VerticalOptions="CenterAndExpand"
-                             HorizontalOptions="CenterAndExpand"
-                             Padding="{StaticResource PageDefaultPaddingSize}"
                              Spacing="{StaticResource LargeSpacing}">
-                    <Label Text="{StaticResource AppNameString}"
-                           FontFamily="{StaticResource RegularFontFamily}"
-                           FontSize="{StaticResource BigFontSize}"
-                           TextColor="{StaticResource PrimaryTextColor}"
+                    <ffimage:CachedImage Grid.Column="0"
+                                         Aspect="AspectFill"
+                                         CacheDuration="30"
+                                         DownsampleToViewSize="True"
+                                         ErrorPlaceholder="img_default.png"
+                                         FadeAnimationEnabled="True"
+                                         FadeAnimationForCachedImages="True"
+                                         HorizontalOptions="FillAndExpand"
+                                         LoadingPlaceholder="img_loading.png"
+                                         RetryCount="5"
+                                         RetryDelay="450"
+                                         Source="{Binding SelectedItem.ImageUrl}" />
+                    <Label Margin="0,20,0,0"
+                           Padding="{StaticResource PageDefaultPaddingSize}"
+                           FontFamily="{StaticResource MediumFontFamily}"
+                           FontSize="{StaticResource HugeFontSize}"
+                           LineBreakMode="TailTruncation"
                            MaxLines="1"
-                           LineBreakMode="TailTruncation" />
+                           Text="{Binding SelectedItem.Name}"
+                           TextColor="{StaticResource PrimaryTextColor}" />
                 </StackLayout>
             </ScrollView>
 
             <!-- Toolbar -->
-            <controls:ToolbarView Grid.Row="0"
-                                  x:Name="Toolbar"
-                                  Text="{Binding PageTitle}"
-                                  SubText="{Binding PageSubtitle}"
+            <controls:ToolbarView x:Name="Toolbar"
+                                  Grid.Row="0"
+                                  BarBackgroundColor="{StaticResource PrimaryColor}"
+                                  Command="{Binding BackCommand}"
                                   FontFamily="{StaticResource MediumFontFamily}"
                                   FontSize="{StaticResource BigFontSize}"
-                                  TextColor="{StaticResource TertiaryTextColor}"
-                                  IconColor="{StaticResource IconsColor}"
                                   HasIcon="True"
-                                  BarBackgroundColor="{StaticResource PrimaryColor}"
-                                  Command="{Binding BackCommand}" />
+                                  IconColor="{StaticResource IconsColor}"
+                                  SubText="{Binding PageSubtitle}"
+                                  Text="{Binding PageTitle}"
+                                  TextColor="{StaticResource TertiaryTextColor}" />
 
             <!-- Loading -->
             <controls:LoadingView Grid.RowSpan="2"
-                                  Text="{Binding LoadingMessage}"
                                   IsLoading="{Binding IsBusy}"
-                                  IsVisible="{Binding IsBusy}" />
+                                  IsVisible="{Binding IsBusy}"
+                                  Text="{Binding LoadingMessage}" />
 
         </Grid>
     </ContentPage.Content>

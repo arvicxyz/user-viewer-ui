@@ -10,20 +10,20 @@ namespace XamApp.Services
 {
     public class MainPageService : BaseService, IMainPageService
     {
-        private readonly IApiService<ITrefleService> _trefleService;
+        private readonly IApiService<IUserService> _userService;
         private readonly IMapper _mapper;
 
         public MainPageService(
-            IApiService<ITrefleService> trefleService,
+            IApiService<IUserService> userService,
             IMapper mapper)
         {
-            _trefleService = trefleService;
+            _userService = userService;
             _mapper = mapper;
         }
 
         public async Task<List<UserModel>> GetUsers()
         {
-            var response = await InvokeWithPolicyAsync(() => _trefleService.Api.GetUsers());
+            var response = await InvokeWithPolicyAsync(() => _userService.Api.GetUsers());
 
             if (response.FinalException != null)
             {
