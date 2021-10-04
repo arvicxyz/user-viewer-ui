@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pancake:PancakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                     x:Class="XamApp.Views.Controls.HotcakeView">
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState x:Name="Selected">
+                <VisualState.Setters>
+                    <Setter Property="BackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=SelectedColor}" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Unselected">
+                <VisualState.Setters>
+                    <Setter Property="BackgroundColor" Value="{Binding Source={RelativeSource Self}, Path=BackgroundColor}" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <pancake:PancakeView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizerTapped"
+                              NumberOfTapsRequired="1" />
+    </pancake:PancakeView.GestureRecognizers>
+</pancake:PancakeView>

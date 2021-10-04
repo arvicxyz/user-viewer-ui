@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="XamApp.Views.Controls.LoadingView"
+             Padding="5">
+    <ContentView.Content>
+        <pancake:PancakeView VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Padding="15,10"
+                             CornerRadius="8"
+                             IsClippedToBounds="False"
+                             BackgroundColor="{StaticResource AccentColor}"
+                             Style="{StaticResource LoadingShadowStyle}">
+            <Grid VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  RowSpacing="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ActivityIndicator Grid.Row="0"
+                                   x:Name="LoadingIndicator"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   WidthRequest="{StaticResource ActivityIndicatorSize}"
+                                   HeightRequest="{StaticResource ActivityIndicatorSize}"
+                                   Color="{StaticResource TertiaryTextColor}" />
+                <Label Grid.Row="1"
+                       x:Name="LoadingLabel"
+                       VerticalOptions="EndAndExpand"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       FontFamily="{StaticResource RegularFontFamily}"
+                       FontSize="{StaticResource TitleFontSize}"
+                       TextColor="{StaticResource TertiaryTextColor}" />
+            </Grid>
+        </pancake:PancakeView>
+    </ContentView.Content>
+</ContentView>

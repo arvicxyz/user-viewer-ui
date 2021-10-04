@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamApp.Views.Controls.InformationView">
+    <ContentView.Content>
+        <StackLayout Spacing="15">
+            <Label x:Name="InfoImage"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   FontSize="100"
+                   TextColor="{StaticResource SecondaryTextColor}"
+                   Style="{StaticResource IconStyle}" />
+            <Label x:Name="InfoLabel"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="{StaticResource RegularFontFamily}"
+                   FontSize="{StaticResource HeaderFontSize}"
+                   TextColor="{StaticResource SecondaryTextColor}" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

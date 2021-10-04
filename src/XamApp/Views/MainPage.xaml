@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:XamApp.ViewModels;assembly=XamApp"
+             xmlns:behaviors="clr-namespace:XamApp.Behaviors;assembly=XamApp"
+             xmlns:constants="clr-namespace:XamApp.Constants;assembly=XamApp"
+             xmlns:controls="clr-namespace:XamApp.Views.Controls;assembly=XamApp"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="XamApp.Views.MainPage"
+             base:ViewModelLocator.AutoWireViewModel="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBgColor}">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Main -->
+            <ListView Grid.Row="1"
+                      ItemsSource="{Binding GroupedData}"
+                      SelectionMode="None"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      IsGroupingEnabled="True"
+                      BackgroundColor="Transparent">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding SelectItemCommand}"
+                                                      EventName="ItemTapped" />
+                </ListView.Behaviors>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Key}"
+                                   VerticalTextAlignment="Center"
+                                   Padding="15,10"
+                                   FontFamily="{StaticResource MediumFontFamily}"
+                                   FontSize="{StaticResource LabelFontSize}"
+                                   TextColor="{StaticResource PrimaryTextColor}"
+                                   BackgroundColor="{StaticResource MainLightBgColor}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="Start"
+                                  Margin="4"
+                                  Padding="10"
+                                  ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ffimage:CachedImage Grid.Column="0"
+                                                     Source="{Binding ImageUrl}"
+                                                     LoadingPlaceholder="img_loading.png"
+                                                     ErrorPlaceholder="img_default.png"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     WidthRequest="80"
+                                                     HeightRequest="80"
+                                                     Aspect="AspectFill"
+                                                     CacheDuration="30"
+                                                     RetryCount="5"
+                                                     RetryDelay="450"
+                                                     FadeAnimationEnabled="True"
+                                                     FadeAnimationForCachedImages="True"
+                                                     DownsampleToViewSize="True" />
+                                <StackLayout Grid.Column="1"
+                                             Orientation="Vertical"
+                                             VerticalOptions="Center"
+                                             Margin="20,0,0,0"
+                                             Spacing="3">
+                                    <Label Text="{Binding CommonName}"
+                                           FontFamily="{StaticResource MediumFontFamily}"
+                                           FontSize="{StaticResource BigFontSize}"
+                                           TextColor="{StaticResource PrimaryTextColor}"
+                                           MaxLines="1"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding ScientificName}"
+                                           FontFamily="{StaticResource RegularFontFamily}"
+                                           FontAttributes="Italic"
+                                           FontSize="{StaticResource LabelFontSize}"
+                                           TextColor="{StaticResource SubTextColor}"
+                                           MaxLines="1"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding Year}"
+                                           FontFamily="{StaticResource LightFontFamily}"
+                                           FontSize="{StaticResource TextFontSize}"
+                                           TextColor="{StaticResource SecondaryTextColor}" />
+                                </StackLayout>
+                                <Label Grid.Column="2"
+                                       Text="{Static constants:FontAwesomeIcon.AngleRight}"
+                                       VerticalOptions="Center"
+                                       FontFamily="{StaticResource IconFontFamily}"
+                                       FontSize="{StaticResource IconFontBigSize}"
+                                       TextColor="{StaticResource PrimaryColor}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <BoxView HeightRequest="{StaticResource SafeBottomSize}" />
+                </ListView.Footer>
+            </ListView>
+
+            <!-- Toolbar -->
+            <controls:ToolbarView Grid.Row="0"
+                                  x:Name="Toolbar"
+                                  Text="{Binding PageTitle}"
+                                  FontFamily="DancingScript"
+                                  FontSize="{StaticResource HugeFontSize}"
+                                  TextColor="{StaticResource TertiaryTextColor}"
+                                  IconFont="{StaticResource LightIconFontFamily}"
+                                  IconSize="{StaticResource IconFontSize}"
+                                  IconColor="{StaticResource IconsColor}"
+                                  IconAlignment="Center"
+                                  HasIcon="False"
+                                  BarBackgroundColor="{StaticResource PrimaryColor}" />
+
+            <!-- Loading -->
+            <controls:LoadingView Grid.RowSpan="2"
+                                  Text="{Binding LoadingMessage}"
+                                  IsLoading="{Binding IsBusy}"
+                                  IsVisible="{Binding IsBusy}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

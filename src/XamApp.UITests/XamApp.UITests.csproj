@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{E4DC4B92-8548-44C5-A9EC-7B104A872186}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <RootNamespace>XamApp.UITests</RootNamespace>
+        <AssemblyName>XamApp.UITests</AssemblyName>
+        <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.13.1" />
+        <PackageReference Include="Xamarin.UITest" Version="3.0.15" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Tests.cs" />
+        <Compile Include="AppInitializer.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+    <ItemGroup>
+        <ProjectReference Include="..\XamApp.iOS\XamApp.iOS.csproj">
+            <Project>{AAAA6793-76C1-4C5A-A88B-27283DC9F3D5}</Project>
+            <Name>XamApp.iOS</Name>
+            <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+            <Private>False</Private>
+        </ProjectReference>
+        <ProjectReference Include="..\XamApp.Android\XamApp.Android.csproj">
+            <Project>{A491F25B-9B97-4C60-990E-D1DF095834EC}</Project>
+            <Name>XamApp.Android</Name>
+            <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+            <Private>False</Private>
+        </ProjectReference>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pancake:PancakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:constants="clr-namespace:XamApp.Constants;assembly=XamApp"
+                     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                     x:Class="XamApp.Views.Controls.ToolbarView"
+                     x:Name="BarView">
+    <Grid ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource ToolbarHeight}" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Column="0"
+                     Grid.ColumnSpan="3"
+                     VerticalOptions="Center"
+                     Margin="{StaticResource ToolbarTitlePadding}"
+                     Spacing="0">
+            <Label x:Name="TitleLabel"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="TailTruncation" />
+            <Label x:Name="SubtitleLabel"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="{StaticResource LightFontFamily}"
+                   FontSize="{StaticResource LabelFontSize}"
+                   LineBreakMode="TailTruncation"
+                   IsVisible="False" />
+        </StackLayout>
+        <StackLayout Grid.Column="0"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={x:Reference BarView}, Path=IconCommand}"
+                                      NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="IconButton"
+                   Text="{Static constants:FontAwesomeIcon.AngleLeft}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Start"
+                   Margin="{StaticResource ToolbarIconPadding}"
+                   WidthRequest="{StaticResource IconFontLSize}"
+                   HeightRequest="{StaticResource IconFontLSize}"
+                   FontFamily="{StaticResource IconFontFamily}"
+                   FontSize="{StaticResource IconFontLSize}"
+                   Style="{StaticResource IconStyle}"
+                   IsVisible="False" />
+        </StackLayout>
+        <StackLayout Grid.Column="2"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={x:Reference BarView}, Path=ButtonCommand}"
+                                      NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="TextButton"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="End"
+                   Margin="{StaticResource ToolbarIconPadding}"
+                   FontFamily="{StaticResource LightFontFamily}"
+                   FontSize="{StaticResource InputFontSize}"
+                   IsVisible="False" />
+        </StackLayout>
+    </Grid>
+</pancake:PancakeView>

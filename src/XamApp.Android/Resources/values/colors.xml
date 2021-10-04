@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Icon Color -->
+    <color name="launcher_background">#E93636</color>
+    <!-- Brand Colors -->
+    <color name="primary_brand">#6A0FDB</color>
+    <color name="secondary_brand">#DFE3EE</color>
+    <color name="tertiary_brand">#03A9F4</color>
+    <!-- System Colors -->
+    <color name="primary">@color/primary_brand</color>
+    <color name="primary_dark">#391568</color>
+    <color name="primary_light">#9500FF</color>
+    <color name="accent">@color/tertiary_brand</color>
+    <color name="accent_dark">#375CE7</color>
+    <color name="accent_light">#5CCBFD</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#C7C7C7</color>
+    <color name="tertiary_text">#FAFAFA</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="selector">#E1E1E1</color>
+    <color name="list_view">#FFFFFF</color>
+    <color name="main_light_bg">#EFF0F4</color>
+    <color name="main_dark_bg">@color/secondary_brand</color>
+    <!-- Selector Colors -->
+    <color name="list_view_selected">@android:color/transparent</color>
+    <color name="list_view_highlighted">@android:color/transparent</color>
+</resources>

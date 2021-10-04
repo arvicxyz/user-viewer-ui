@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>
+        </DebugType>
+        <LangVersion>9.0</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+        <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+        <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+        <PackageReference Include="Polly" Version="7.2.1" />
+        <PackageReference Include="AutoMapper" Version="10.1.1" />
+        <PackageReference Include="DryIoc.dll" Version="4.7.4" />
+        <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+        <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+        <PackageReference Include="Refit" Version="6.0.38" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Behaviors\" />
+        <Folder Include="Behaviors\Base\" />
+        <Folder Include="Constants\" />
+        <Folder Include="Converters\" />
+        <Folder Include="Core\" />
+        <Folder Include="Core\Configurations\" />
+        <Folder Include="Core\Exception\" />
+        <Folder Include="Core\Interfaces\" />
+        <Folder Include="Localization\" />
+        <Folder Include="Localization\Resources\" />
+        <Folder Include="Models\" />
+        <Folder Include="Models\Dtos\" />
+        <Folder Include="Models\Entities\" />
+        <Folder Include="Models\Entities\Base\" />
+        <Folder Include="Services\" />
+        <Folder Include="Services\ApiClientServices\" />
+        <Folder Include="Services\ApiClientServices\Base\" />
+        <Folder Include="Services\Base\" />
+        <Folder Include="Services\Interfaces\" />
+        <Folder Include="Storage\" />
+        <Folder Include="ViewModels\" />
+        <Folder Include="ViewModels\Base\" />
+        <Folder Include="ViewModels\Commands\" />
+        <Folder Include="Views\" />
+        <Folder Include="Views\Controls\" />
+        <Folder Include="Views\Custom\" />
+        <Folder Include="Views\Popups\" />
+        <Folder Include="ViewModels\Popups\" />
+        <Folder Include="Utilities\" />
+        <Folder Include="Resources\" />
+        <Folder Include="Resources\Fonts\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Views\HomePage.xaml.cs">
+            <DependentUpon>HomePage.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\MainPage.xaml.cs">
+            <DependentUpon>MainPage.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Localization\Resources\AppResource.Designer.cs">
+            <DependentUpon>AppResource.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Localization\Resources\AppResource.de.Designer.cs">
+            <DependentUpon>AppResource.de.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\Fonts\DancingScript.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Localization\Resources\AppResource.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>AppResource.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Localization\Resources\AppResource.de.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>AppResource.de.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Resources\Fonts\DancingScript.ttf" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:converters="clr-namespace:XamApp.Converters;assembly=XamApp"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="XamApp.App">
+    <Application.Resources>
+        <!-- Application Resource Dictionary -->
+        <ResourceDictionary>
+
+            <!-- Converters -->
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+
+            <!-- Strings -->
+            <x:String x:Key="AppNameString">Xam App</x:String>
+
+            <!-- Files -->
+            <x:String x:Key="AppIconFile">icon.png</x:String>
+            <x:String x:Key="LogoFile">logo.png</x:String>
+
+            <!-- Brand Colors -->
+            <Color x:Key="PrimaryBrandColor">#6A0FDB</Color>
+            <Color x:Key="SecondaryBrandColor">#DFE3EE</Color>
+            <Color x:Key="TertiaryBrandColor">#03A9F4</Color>
+
+            <!-- System Colors -->
+            <Color x:Key="PrimaryColor">#6A0FDB</Color>
+            <Color x:Key="PrimaryDarkColor">#391568</Color>
+            <Color x:Key="PrimaryLightColor">#9500FF</Color>
+            <Color x:Key="AccentColor">#03A9F4</Color>
+            <Color x:Key="AccentDarkColor">#375CE7</Color>
+            <Color x:Key="AccentLightColor">#5CCBFD</Color>
+            <Color x:Key="PrimaryTextColor">#212121</Color>
+            <Color x:Key="SecondaryTextColor">#757575</Color>
+            <Color x:Key="TertiaryTextColor">#FAFAFA</Color>
+            <Color x:Key="IconsColor">#FFFFFF</Color>
+            <Color x:Key="DividerColor">#BDBDBD</Color>
+            <Color x:Key="SelectorColor">#E1E1E1</Color>
+            <Color x:Key="ListViewColor">#FFFFFF</Color>
+            <Color x:Key="MainLightBgColor">#EFF0F4</Color>
+            <Color x:Key="MainDarkBgColor">#DFE3EE</Color>
+
+            <!-- Custom Colors -->
+            <Color x:Key="PageBgColor">#FFFFFF</Color>
+            <Color x:Key="MenuBgColor">#E9EBEE</Color>
+            <Color x:Key="MainWhiteColor">#F6F7F9</Color>
+            <Color x:Key="MainBlackColor">#363636</Color>
+            <Color x:Key="MainGrayColor">#D7D8D9</Color>
+            <Color x:Key="StatusBarColor">#000000</Color>
+            <Color x:Key="SubTextColor">#626262</Color>
+            <Color x:Key="DialogButtonColor">#B0B2B4</Color>
+            <OnPlatform x:Key="ShadowColor"
+                        x:TypeArguments="Color">
+                <On Platform="iOS">
+                    <OnIdiom x:TypeArguments="Color"
+                             Phone="#80000000"
+                             Tablet="#80000000" />
+                </On>
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="Color"
+                             Phone="#80000000"
+                             Tablet="#80000000" />
+                </On>
+            </OnPlatform>
+
+            <!-- Fonts -->
+            <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="FontAwesome5ProRegular" />
+                <On Platform="Android" Value="FontAwesome.otf#FontAwesome" />
+            </OnPlatform>
+            <OnPlatform x:Key="LightIconFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="FontAwesome5ProLight" />
+                <On Platform="Android" Value="FontAwesomeLight.otf#FontAwesomeLight" />
+            </OnPlatform>
+            <OnPlatform x:Key="SolidIconFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="FontAwesome5ProSolid" />
+                <On Platform="Android" Value="FontAwesomeSolid.otf#FontAwesomeSolid" />
+            </OnPlatform>
+            <OnPlatform x:Key="RegularFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue</On>
+                <On Platform="Android">sans-serif</On>
+            </OnPlatform>
+            <OnPlatform x:Key="MediumFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Medium</On>
+                <On Platform="Android">sans-serif-medium</On>
+            </OnPlatform>
+            <OnPlatform x:Key="LightFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS">HelveticaNeue-Light</On>
+                <On Platform="Android">sans-serif-light</On>
+            </OnPlatform>
+
+            <!-- Font Sizes -->
+            <OnPlatform x:Key="InputFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="16"
+                             Tablet="20" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="ButtonFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="16"
+                             Tablet="20" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="HugeFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="25"
+                             Tablet="28" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="LargeFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="22"
+                             Tablet="26" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="BigFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="20"
+                             Tablet="24" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="HeaderFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="18"
+                             Tablet="22" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="TitleFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="16"
+                             Tablet="20" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="LabelFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="14"
+                             Tablet="18" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="TextFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="12"
+                             Tablet="16" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="SmallFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="10"
+                             Tablet="14" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="TinyFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="8"
+                             Tablet="12" />
+                </On>
+            </OnPlatform>
+
+            <!-- Icon Fonts -->
+            <OnPlatform x:Key="IconFontSmallSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="15"
+                             Tablet="18" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontMediumSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="20"
+                             Tablet="24" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontBigSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="25"
+                             Tablet="30" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="30"
+                             Tablet="36" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontLSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="35"
+                             Tablet="42" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontXLSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="40"
+                             Tablet="48" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontXXLSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="45"
+                             Tablet="54" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="IconFontXXXLSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="50"
+                             Tablet="60" />
+                </On>
+            </OnPlatform>
+
+            <!-- System Paddings, Margins and Spacings -->
+            <OnPlatform x:Key="PageDefaultPaddingSize"
+                        x:TypeArguments="Thickness">
+                <On Platform="iOS">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="15,25,15,15"
+                             Tablet="25,35,25,25" />
+                </On>
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="15"
+                             Tablet="25" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="DefaultMarginSize"
+                        x:TypeArguments="Thickness">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="15"
+                             Tablet="25" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="DefaultPaddingSize"
+                        x:TypeArguments="Thickness">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="15"
+                             Tablet="25" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="SmallSpacing"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="5"
+                             Tablet="10" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="MediumSpacing"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="10"
+                             Tablet="20" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="LargeSpacing"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="15"
+                             Tablet="25" />
+                </On>
+            </OnPlatform>
+
+            <!-- Custom Paddings, Margins and Spacings -->
+
+            <!-- Sizes -->
+            <OnPlatform x:Key="ToolbarHeight"
+                        x:TypeArguments="GridLength">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="GridLength"
+                             Phone="56"
+                             Tablet="64" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="ToolbarTitlePadding"
+                        x:TypeArguments="Thickness">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="60,0"
+                             Tablet="60,0" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="ToolbarIconPadding"
+                        x:TypeArguments="Thickness">
+                <On Platform="iOS,Android">
+                    <OnIdiom x:TypeArguments="Thickness"
+                             Phone="12,0"
+                             Tablet="15,0" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="ActivityIndicatorSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="30"
+                             Tablet="50" />
+                </On>
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="30"
+                             Tablet="50" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="ActivityIndicatorScale"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="1"
+                             Tablet="1" />
+                </On>
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="0.8"
+                             Tablet="0.8" />
+                </On>
+            </OnPlatform>
+            <OnPlatform x:Key="SafeBottomSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="24"
+                             Tablet="24" />
+                </On>
+                <On Platform="Android">
+                    <OnIdiom x:TypeArguments="x:Double"
+                             Phone="5"
+                             Tablet="5" />
+                </On>
+            </OnPlatform>
+
+            <!-- System Styles -->
+            <Style x:Key="HorizontalDividerLineStyle"
+                   TargetType="BoxView">
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS,Android">
+                                <OnIdiom x:TypeArguments="x:Double"
+                                         Phone="0.5"
+                                         Tablet="0.7" />
+                            </On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="Color"
+                        Value="{StaticResource DividerColor}" />
+            </Style>
+            <Style x:Key="VerticalDividerLineStyle"
+                   TargetType="BoxView">
+                <Setter Property="WidthRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS,Android">
+                                <OnIdiom x:TypeArguments="x:Double"
+                                         Phone="0.5"
+                                         Tablet="0.7" />
+                            </On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="VerticalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="Color"
+                        Value="{StaticResource DividerColor}" />
+            </Style>
+            <Style x:Key="IconStyle"
+                   TargetType="Label">
+                <Setter
+                    Property="FontFamily"
+                    Value="{StaticResource IconFontFamily}" />
+                <Setter
+                    Property="WidthRequest"
+                    Value="{StaticResource IconFontSize}" />
+                <Setter
+                    Property="HeightRequest"
+                    Value="{StaticResource IconFontSize}" />
+                <Setter
+                    Property="VerticalTextAlignment"
+                    Value="Center" />
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="Center" />
+            </Style>
+            <Style x:Key="EntryStyle"
+                   TargetType="Entry">
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS,Android">
+                                <OnIdiom x:TypeArguments="x:Double"
+                                         Phone="50"
+                                         Tablet="65" />
+                            </On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Start" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource InputFontSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource SecondaryTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="White" />
+            </Style>
+            <Style x:Key="ButtonStyle"
+                   TargetType="Button">
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS,Android">
+                                <OnIdiom x:TypeArguments="x:Double"
+                                         Phone="45"
+                                         Tablet="60" />
+                            </On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontSize"
+                        Value="{StaticResource ButtonFontSize}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TertiaryTextColor}" />
+            </Style>
+            <Style x:Key="DialogButtonStyle"
+                   TargetType="Button">
+                <Setter Property="HeightRequest">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS,Android">
+                                <OnIdiom x:TypeArguments="x:Double"
+                                         Phone="40"
+                                         Tablet="55" />
+                            </On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MediumFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource ButtonFontSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource TertiaryTextColor}" />
+            </Style>
+            <Style x:Key="LoadingShadowStyle"
+                   TargetType="pancake:PancakeView">
+                <Setter Property="Shadow">
+                    <pancake:DropShadow Color="{StaticResource ShadowColor}"
+                                        Offset="0,10"
+                                        BlurRadius="10" />
+                </Setter>
+            </Style>
+            <Style x:Key="ToolbarShadowStyle"
+                   TargetType="pancake:PancakeView">
+                <Setter Property="Shadow">
+                    <pancake:DropShadow Color="{StaticResource ShadowColor}"
+                                        Offset="0,2"
+                                        BlurRadius="4" />
+                </Setter>
+            </Style>
+
+            <!-- Custom Styles -->
+
+            <!-- Others -->
+            <Keyboard x:Key="NoCapitalizationKeyboard"
+                      x:FactoryMethod="Create">
+                <x:Arguments>
+                    <KeyboardFlags>None</KeyboardFlags>
+                </x:Arguments>
+            </Keyboard>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
