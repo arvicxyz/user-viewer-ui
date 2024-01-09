@@ -24,7 +24,7 @@ namespace XamApp
 
             var config = Rules.Default;
             if (Device.RuntimePlatform == Device.iOS)
-                config = config.WithTrackingDisposableTransients().WithoutFastExpressionCompiler();
+                config = config.WithTrackingDisposableTransients();
 
             IContainer Container = new Container(config);
             IocManager.RegisterDependencies(Container);
