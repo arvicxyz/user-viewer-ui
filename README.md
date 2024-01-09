@@ -1,6 +1,6 @@
 # Introduction
 
-A user viewer app UI made using Xamarin.Forms.
+A user viewer app test made using Xamarin.Forms.
 
 # Development
 
