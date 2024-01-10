@@ -4,7 +4,7 @@ A user viewer app test made using Xamarin.Forms.
 
 # Development
 
-Works on both Android and iOS, optimized for both portrait and landscape, works on Android phones and iPhones and designed to work on Tablets/iPads.
+This project is made using Xamarin.Forms as a test project last October 2021. It showcases the use of MVVM architecture with clean, extensible, and maintainable code in Xamarin.Forms.
 
 # Screenshots
 
